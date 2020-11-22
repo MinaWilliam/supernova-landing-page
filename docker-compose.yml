@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  npm:
+    image: node:latest
+    container_name: ${DOCKER_CONTAINER_PREFIX}-npm
+    volumes:
+      - ./:/var/www
+    working_dir: /var/www
+    entrypoint: ['npm']
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
